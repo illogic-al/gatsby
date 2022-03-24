@@ -35,4 +35,14 @@ describe(`Pages`, () => {
         cy.visit(`/list`).waitForRouteChange()
         cy.getTestElement(`embed-slug`).contains(`about/embedded`)
     })
+
+    it (`generates a page with an image import for a jpg`, () => {
+        cy.visit(`/mdx_import1`).waitForRouteChange()
+        cy.getTestElement(`purple-png-image`).invoke('height').should('eq', 512)
+    })
+
+    it (`generates a page with an image import for a png`, () => {
+        cy.visit(`/mdx_import2`).waitForRouteChange()
+        cy.getTestElement(`green-png-image`).invoke('height').should('eq', 1024)
+    })
 })
